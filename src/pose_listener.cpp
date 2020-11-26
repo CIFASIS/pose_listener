@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     n.param<std::string>("output_file", filepath, "trajectory.txt");
     ROS_INFO("Topic: %s", topic.c_str());
     ROS_INFO("Output file: %s", filepath.c_str());
-    std::ifstream infile(filepath);
+    std::ifstream infile(filepath.c_str());
     if (infile.good()) {
         std::cerr << "ERROR: Output File Exists: " << filepath << std::endl;
         return 1;
