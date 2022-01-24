@@ -4,6 +4,7 @@ It currently supports:
 * `nav_msgs::Odometry`
 * `geometry_msgs::PoseStamped`
 * `geometry_msgs::PoseWithCovarianceStamped`
+* `sensor_msgs::Imu` (orientation only)
 
 ## Dependencies
 * ROS
@@ -22,6 +23,7 @@ where
   * `O` if the type is `nav_msgs::Odometry`
   * `PS` if the type is `geometry_msgs::PoseStamped`
   * `PCS` if the type is `geometry_msgs::PoseWithCovarianceStamped`
+  * `I` if the type is `sensor_msgs::Imu` (orientation only)
 * `PATH_TO_FILE` is a path to the output file. `_output_file` is an optional argument. Default value: `trajectory.txt`
 
 ## TODO

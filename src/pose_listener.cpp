@@ -23,6 +23,11 @@ void poseCallbackPoseWithCovarianceStamped(const geometry_msgs::PoseWithCovarian
     logMessage(msgToLog, filePath);
 }
 
+void orientationCallbackImu(const sensor_msgs::Imu::ConstPtr &msg,
+                                           std::string filePath) {
+    MessageToLog msgToLog(msg);
+    logMessage(msgToLog, filePath);
+}
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "pose_listener");
@@ -57,8 +62,11 @@ int main(int argc, char **argv) {
     } else if (topic_type == "O") {
         ROS_INFO("Topic type: nav_msgs::Odometry");
         sub = n.subscribe<nav_msgs::Odometry>(topic, 1000, boost::bind(poseCallback, _1, boost::ref(filepath)));
+    } else if (topic_type == "I") {
+        ROS_INFO("Topic type: sensor_msgs::Imu");
+        sub = n.subscribe<sensor_msgs::Imu>(topic, 1000, boost::bind(orientationCallbackImu, _1, boost::ref(filepath)));
     } else {
-        std::cerr << "ERROR: Unsupported topic type. _type parameter must be one of these: [O, PCS, PS]" << std::endl;
+        std::cerr << "ERROR: Unsupported topic type. _type parameter must be one of these: [O, PCS, PS, I]" << std::endl;
         return -1;
     }
     ros::spin();

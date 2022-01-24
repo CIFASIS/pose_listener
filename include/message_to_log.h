@@ -9,6 +9,7 @@
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
+#include <sensor_msgs/Imu.h>
 
 class MessageToLog {
 
@@ -21,6 +22,8 @@ public:
     MessageToLog(const geometry_msgs::PoseStamped::ConstPtr &msg);
 
     MessageToLog(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr &msg);
+
+    MessageToLog(const sensor_msgs::Imu::ConstPtr &msg);
 
     void saveTUMFormat(std::string filePath);
 

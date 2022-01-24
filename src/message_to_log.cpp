@@ -30,6 +30,17 @@ MessageToLog::MessageToLog(const geometry_msgs::PoseWithCovarianceStamped::Const
     timestamp = msg->header.stamp.toSec();
 }
 
+MessageToLog::MessageToLog(const sensor_msgs::Imu::ConstPtr &msg) {
+    timestamp = msg->header.stamp.toSec();
+    m_xPos = 0;
+    m_yPos = 0;
+    m_zPos = 0;
+    m_qw = msg->orientation.w;
+    m_qx = msg->orientation.x;
+    m_qy = msg->orientation.y;
+    m_qz = msg->orientation.z;
+}
+
 inline void Logger(std::string filePath, std::string logMsg) {
 
     std::ofstream ofs(filePath.c_str(), std::ios_base::out | std::ios_base::app);
