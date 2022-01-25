@@ -55,9 +55,9 @@ inline void Logger(std::string filePath, std::string logMsg) {
 
 void MessageToLog::saveTUMFormat(std::string filePath) {
     std::stringstream ss;
-    ss << std::fixed << timestamp << " " << m_xPos << " " << m_yPos << " " << m_zPos << " " << m_qw << " " << m_qx
-       << " " << m_qy << " " << m_qz;
-    // ROS_INFO("Pose: (%f, %f, %f, %f, %f, %f, %f, %f)", timestamp, m_xPos, m_yPos, m_zPos, m_qw, m_qx, m_qy, m_qz);
+    ss << std::fixed << timestamp << " " << m_xPos << " " << m_yPos << " " << m_zPos << " " << m_qx << " " << m_qy
+       << " " << m_qz << " " << m_qw;
+    // ROS_INFO("Pose: (%f, %f, %f, %f, %f, %f, %f, %f)", timestamp, m_xPos, m_yPos, m_zPos, m_qx, m_qy, m_qz, m_qw);
     std::string T_b_w_str = ss.str();
     Logger(filePath, T_b_w_str);
 }
